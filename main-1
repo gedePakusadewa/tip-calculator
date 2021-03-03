@@ -6,10 +6,33 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<style>
+			.modal{
+				display:hide;
+				border:1px solid black;	
+			}
 		</style>
 	</head>
 	<body>
-	
+		<div>
+			<div>Tip Calculator</div>
+			<div class="modal">
+				<p>asdasd<p>
+			</div>
+			<div>
+				<input type="number" name="bill" />
+				<input type="number" name="peopleSum" />
+				<select id="service" name="serviceValue">
+					<option value="excelent">Excelent</option>
+					<option value="above">Above</option>
+					<option value="average">Average</option>
+					<option value="below">Below</option>
+					<option value="poor">Poor</option>
+				</select>
+			</div>
+			<div>
+				<button>Calculate</button>
+			</div>
+		</div>
 	</body>
 	<script>
 		//lanjut project no 11 di https://jsbeginners.com/javascript-projects-for-beginners/
