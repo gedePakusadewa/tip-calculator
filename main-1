@@ -30,13 +30,21 @@
 				</select>
 			</div>
 			<div>
-				<button>Calculate</button>
+				<button onclick = "get_Value()">Calculate</button>
 			</div>
 		</div>
 	</body>
 	<script>
 		//lanjut project no 11 di https://jsbeginners.com/javascript-projects-for-beginners/
 
+		function get_Value(){
+
+		}
+
+		function is_formDataValid(){
+			var bill_input = document.getElem 
+		}
+		lanjut ngai funtion validasi semua data form jika sudah disubmit, 
 	
 	</script>
 <html>
