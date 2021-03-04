@@ -7,27 +7,36 @@
 
 		<style>
 			.modal{
-				display:hide;
+				display:none;
 				border:1px solid black;	
+				background-color:red;
+				color:white;
+			}
+
+			.container{
+				margin:10% 20%;
+				border:1px solid black;
 			}
 		</style>
 	</head>
 	<body>
-		<div>
+		<div class="container">
 			<div>Tip Calculator</div>
 			<div class="modal">
 				<p>asdasd<p>
 			</div>
 			<div>
-				<input type="number" name="bill" />
-				<input type="number" name="peopleSum" />
-				<select id="service" name="serviceValue">
-					<option value="excelent">Excelent</option>
-					<option value="above">Above</option>
-					<option value="average">Average</option>
-					<option value="below">Below</option>
-					<option value="poor">Poor</option>
-				</select>
+				<form name="form1" onsubmit = "return is_formDataValid()">
+					<input type="number" name="bill" /><br />
+					<input type="number" name="peopleSum" /><br />
+					<select id="service" name="serviceValue">
+						<option value="excelent">Excelent</option>
+						<option value="above">Above</option>
+						<option value="average">Average</option>
+						<option value="below">Below</option>
+						<option value="poor">Poor</option>
+					</select>
+				</form>
 			</div>
 			<div>
 				<button onclick = "get_Value()">Calculate</button>
@@ -42,9 +51,14 @@
 		}
 
 		function is_formDataValid(){
-			var bill_input = document.getElem 
+			var bill_input = document.forms['form1']['bill'];
+			var peopleSum_input = document.forms['form1']['peopleSum'];
+			var serviceValue_input = document.forms['form1']['serviceValue'];
 		}
-		lanjut ngai funtion validasi semua data form jika sudah disubmit, 
-	
+
+		function is_billInputValid(data){
+			return isNumber = /^\d+$/.test(data);
+		} 
+
 	</script>
 <html>
