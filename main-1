@@ -47,17 +47,26 @@
 		//lanjut project no 11 di https://jsbeginners.com/javascript-projects-for-beginners/
 
 		function get_Value(){
-
+			//console.log(is_billInputValid());
+			is_formDataValid();
 		}
 
 		function is_formDataValid(){
-			var bill_input = document.forms['form1']['bill'];
+			var bill_input = is_billInputValid(document.forms['form1']['bill'].value);
 			var peopleSum_input = document.forms['form1']['peopleSum'];
 			var serviceValue_input = document.forms['form1']['serviceValue'];
+			var error_list = {};
+
+			if(bill_input !== "true"){
+				error_list[0] = bill_input;
+			}
+
+			console.log(error_list[0]);
 		}
 
 		function is_billInputValid(data){
-			return isNumber = /^\d+$/.test(data);
+			var isNumber = /^\d+$/.test(parseInt(data));
+			return (isNumber ? "true" : "Please insert bill input correctly");
 		} 
 
 	</script>
