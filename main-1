@@ -22,13 +22,13 @@
 	<body>
 		<div class="container">
 			<div>Tip Calculator</div>
-			<div id="modalDisplay" class="">
-				<p>asdasd<p>
+			<div id="modalDisplay" class="modal">
+				<p>This text should be hided<p>
 			</div>
 			<div>
 				<form name="form1" onsubmit = "return is_formDataValid()">
-					<input type="number" name="bill" placeholder="How much is your bill?" /><br />
-					<input type="number" name="peopleSum" placeholder="How many people?" /><br />
+					<input type="text" name="bill" placeholder="How much is your bill?" /><br />
+					<input type="text" name="peopleSum" placeholder="How many people?" /><br />
 					<select id="service" name="serviceValue">
 						<option value="excelent">Excelent</option>
 						<option value="above">Above</option>
@@ -45,46 +45,77 @@
 	</body>
 	<script>
 		//lanjut project no 11 di https://jsbeginners.com/javascript-projects-for-beginners/
-
-		function get_Value(){
-			//console.log(is_billInputValid());
-			is_formDataValid();
-		}
-
-		function is_formDataValid(){
-			var bill_input = is_billInputValid(document.forms['form1']['bill'].value);
-			var peopleSum_input = is_peopleSumValid(document.forms['form1']['peopleSum'].value);
-			var serviceValue_input = document.forms['form1']['serviceValue'].value;
-			var error_list = {};
-			var tipFinal = 0;
-
-			if(bill_input !== "true"){
-				error_list[0] = bill_input;
+		
+		
+			function get_Value(){
+				//console.log(is_billInputValid(document.forms['form1']['bill'].value));
+				is_formDataValid();
 			}
-			if(peopleSum_input !== "true"){
-				error_list[1] = peopleSum_input;
+
+			function is_formDataValid(){
+				var bill_input = is_billInputValid(document.forms['form1']['bill'].value);
+				var peopleSum_input = is_peopleSumValid(document.forms['form1']['peopleSum'].value);
+				var serviceValue_input = document.forms['form1']['serviceValue'].value;
+				var error_list = [];
+				var tipFinal = 0;
+						
+				if(bill_input !== "true"){
+					error_list[0] = bill_input;
+				}
+
+				if(peopleSum_input !== "true"){
+					error_list[1] = peopleSum_input;
+				}
+				
+				if(error_list.length > 0){
+					document.getElementById('modalDisplay').classList.remove('modal');
+					document.getElementById('modalDisplay').innerHTML = error_list[0] + '<br />' + error_list[1];	
+					console.log('tes modal display');
+				}else{
+					tipFinal = (parseInt(document.forms['form1']['bill'].value) * 5 / 100)  * 
+						parseInt(document.forms['form1']['peopleSum'].value) * get_serviceQuality(serviceValue_input);	
+					document.getElementById('modalDisplay').classList.remove('modal');
+					document.getElementById('modalDisplay').innerHTML = "Total tip you need to pay $" + tipFinal;
+				
+				}
+				
 			}
-			console.log(serviceValue_input);
+			
+			function get_serviceQuality(quality){
+				switch(quality){
+					case "Excelent":
+						return 1.5;
+						break;
+					case "Above":
+						return 1.3;
+						break;
+					case "Average":
+						return 1.2;
+						break;
+					case "Below":
+						return 1.1;
+						break;
+					case "Poor":
+						return 1.05;
+						break;
+					default:
+						return 1;
+						break;
+				}
+			} 
+			
+			function is_billInputValid(data){
+				var isNumber = /^\d+$/.test(parseInt(data));
+				return (isNumber ? "true" : "Please insert bill input correctly");
+			}
 
-			if(error_list.lenght > 0){
-				document.getElementById('modalDisplay').innerHTML = error_list[0] + <br /> + error_list[1];	
-			}else{
-				tipFinal = parseInt(document.forms['form1']['bill'].value) * parsetInt(document.forms['form1']['peopleSUm'].value):	
+			function is_peopleSumValid(data){
+				var isNumber = /^\d+$/.test(parseInt(data));
+				return (isNumber ? "true" : "please insert sum of people correctly"); 
+			}
 
-			}	
-
-			lanjut bagianne, cobak cek ape penyebab erorr ne
-		}
-
-		function is_billInputValid(data){
-			var isNumber = /^\d+$/.test(parseInt(data));
-			return (isNumber ? "true" : "Please insert bill input correctly");
-		}
-
-	function is_peopleSumValid(data){
-		var isNumber = /^\d+$/.test(parseInt(data));
-		return (isNumber ? "true" : "please insert sum of people correcly"); 
-	}
+		
+	
 
 	</script>
 <html>
